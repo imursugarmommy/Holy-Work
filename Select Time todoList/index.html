@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <i class="fa-solid fa-bell"></i>
+        <div class="card">
+            <div class="title">
+                <h2>Select time</h2>
+            </div>
+            <div class="input-div">
+                <input type="text" placeholder="Name a todo" class="todo-input">
+            </div>
+            <div class="select">
+                <select class="hour">
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04" selected>4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select class="minute">
+                    <option value="00">0</option>
+                    <option value="05">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20" selected>20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                    <option value="60">60</option>
+                </select>
+                <select class="time-of-day">
+                    <option value="am" selected>am</option>
+                    <option value="pm">pm</option>
+                </select>
+                <button class="confirm">Submit</button>
+            </div>
+            <div class="describe">
+
+            <!-- Make it like a todo list (take time, activity (and date) and display it in a list created in js) -->
+
+            </div>
+    </div>
+    <div class="output">
+        <p class="output1"></p>
+        <p>:</p>
+        <p class="output2"></p>
+        <p class="output3"></p>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/8a6963ffc1.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
