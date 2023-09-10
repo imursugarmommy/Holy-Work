@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@400;500;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: 'kufam', sans-serif;
+}
+
+.circle {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: rgba(211, 63, 197, 0.22);
+}
+
+.c1 {
+  top: 50px;
+  right: 300px;
+}
+
+.c2 {
+  width: 500px;
+  height: 500px;
+  top: 200px;
+  left: 500px;
+}
+
+.c3 {
+  width: 300px;
+  height: 300px;
+  top: 550px;
+  left: 800px;
+}
+
+.cards-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.card {
+  width: 1000px;
+  height: 300px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: white;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-content {
+  margin-left: 250px;
+  transition: 400ms ease;
+}
+
+.box-circle {
+  width: 600px;
+  height: 600px;
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: -50%;
+  left: -380px;
+  transition: 400ms ease;
+}
+
+.green-circle {
+  background-color: rgba(116, 255, 104, 0.39);
+}
+
+.red-circle {
+  background: rgba(255, 104, 104, 0.39);
+}
+
+.card img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+}
+
+.card svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+}
+
+.failed svg {
+  left: 25px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 75px;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  color: white;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 2rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 50%;
+  background: rgba(211, 63, 197, 0.06);
+  color: #8b00a1;
+  cursor: pointer;
+}
+
+.card:hover .box-circle {
+  width: 1500px;
+}
+
+.card:hover .card-content {
+  transform: translateX(1500px);
+}
+
+.custom-alert {
+  width: 800px;
+  height: 250px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 30px 30px 0 0;
+  z-index: 20;
+  background-color: white;
+  font-size: 1.2rem;
+  padding: 1rem 4rem;
+  transition: all 300ms ease;
+}
+
+.flex {
+  display: flex;
+}
+
+.choose-buttons {
+  gap: 50px;
+}
+
+.choose {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.25);
+}
+
+.choose:hover {
+  background: rgba(160, 160, 160, 0.1);
+}
+
+.green {
+  border: 3px solid rgb(116, 255, 104);
+}
+
+.red {
+  border: 3px solid rgb(255, 104, 104);
+}
+
+.checkbox {
+  width: 100%;
+  align-items: left;
+  gap: 20px;
+}
+
+[type='checkbox'] {
+  width: 1.2rem;
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.input input {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  width: 45%;
+  border: 1px solid rgba(160, 160, 160, 0.1);
+  border-radius: 5px;
+  outline: none;
+  background: white;
+  transition: background 200ms ease;
+}
+
+.input input:focus {
+  background: rgba(160, 160, 160, 0.1);
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px rgba(160, 160, 160, 0.1);
+}
+
+/* IMPORTANT */
+
+.false {
+  height: 150px;
+  width: max-content;
+}
+
+.input {
+  display: none;
+}

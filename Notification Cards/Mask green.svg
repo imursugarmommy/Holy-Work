@@ -1,0 +1,10 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mask group">
+<mask id="mask0_1_33" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+<path id="Ellipse 10" d="M100 50.7123C100 93.7322 89.863 100 49.3151 100C8.76712 100 0 93.7322 0 50.7123C0 7.69231 9.86302 0 49.3151 0C88.7671 0 100 7.69231 100 50.7123Z" fill="#3EBD69" fill-opacity="0.49"/>
+</mask>
+<g mask="url(#mask0_1_33)">
+<path id="Ellipse 8" d="M151.333 81.3579C151.333 165.358 99.8806 142.358 59.3326 142.358C18.7847 142.358 -60.6673 129.858 -4.66736 97.3578C51.3326 64.8579 74.8326 16.8579 88.8326 -31.1421C102.833 -79.1421 151.333 -2.64215 151.333 81.3579Z" fill="#459F64" fill-opacity="0.52"/>
+</g>
+</g>
+</svg>
