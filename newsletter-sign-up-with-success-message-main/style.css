@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+li {
+  padding: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  background: var(--charcoal-grey);
+  color: var(--dark-slate-grey);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --gradient-orange: #ff693e;
+  --gradient-pink: #ff537b;
+
+  --tomato: hsl(4, 100%, 67%);
+  --dark-slate-grey: hsl(234, 29%, 20%);
+  --charcoal-grey: hsl(235, 18%, 26%);
+  --grey: hsl(231, 7%, 60%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-size-paragraph: 16px;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.container {
+  --svg-height: 593px;
+  width: 80%;
+  height: calc(var(--svg-height) + 4rem);
+  background-color: white;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+}
+
+.container .content {
+  --gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 0 4rem 2rem;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: var(--gap);
+}
+
+p {
+  font-size: var(--font-size-paragraph);
+  margin-bottom: 0.5rem;
+}
+
+.container .content ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin-bottom: calc(var(--gap) * 2);
+}
+
+.container .content li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container .content form {
+  position: relative;
+}
+
+.container .content form p {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.container .content form input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  outline: none;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  margin-bottom: calc(var(--gap) + 0.5rem);
+}
+
+.invalid {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 1rem;
+  background-color: var(--gradient-orange);
+  color: var(--white);
+  border: 2px solid var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: none;
+}
+
+.invalid i {
+  margin-left: 10px;
+}
+
+@keyframes shake {
+  10%,
+  50% {
+    transform: translateX(10px);
+  }
+  20%,
+  90% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.container .content form button {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background: var(--dark-slate-grey);
+  color: white;
+  padding: 0.8rem 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.container .content form button:hover {
+  background: linear-gradient(
+    to left,
+    var(--gradient-orange),
+    var(--gradient-pink)
+  );
+}
+
+.success {
+  width: 500px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  border-radius: 30px;
+}
+
+.success svg {
+  background: linear-gradient(225deg, #ff6a3a, #ff527b);
+  border-radius: 50%;
+}
+
+.success h1 {
+  line-height: 50px;
+}
+
+.success span {
+  font-weight: 700;
+}
+
+.success button {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background: var(--dark-slate-grey);
+  color: white;
+  padding: 0.8rem 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.success button:hover {
+  background: linear-gradient(
+    to left,
+    var(--gradient-orange),
+    var(--gradient-pink)
+  );
+}
+
+@media screen and (max-width: 1086px) {
+  .container .content {
+    --gap: 0.5rem;
+    margin: -2rem;
+  }
+}
+
+@media screen and (max-width: 936px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .container .content {
+    margin: 0;
+    --gap: 1rem;
+    padding: 2rem;
+  }
+
+  .container .img svg {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .container {
+    width: 100%;
+    margin: 0;
+  }
+}
