@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+  padding: 4em 8em;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --soft-orange: hsl(35, 77%, 62%);
+  --soft-red: hsl(5, 85%, 63%);
+  --off-white: hsl(36, 100%, 99%);
+  --grayish-blue: hsl(233, 8%, 79%);
+  --dark-grayish-blue: hsl(236, 13%, 42%);
+  --very-dark-blue: hsl(240, 100%, 5%);
+
+  --font-size-paragraph: 15px;
+}
+
+nav {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+nav > * {
+  flex-basis: 50%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--dark-grayish-blue);
+  transition: all 300ms ease;
+}
+
+nav ul li a:hover {
+  color: var(--soft-red);
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  align-items: end;
+  justify-content: center;
+  flex-grow: 1;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 300ms ease;
+}
+
+.burger > * {
+  width: 40px;
+  height: 3px;
+  background-color: var(--very-dark-blue);
+  transition: all 300ms ease;
+}
+
+.flex-group {
+  display: flex;
+  gap: 2em;
+}
+
+.landing-page .landing-content {
+  margin-top: 2rem;
+  display: flex;
+}
+
+.landing-page .landing-content > * {
+  flex-basis: 40%;
+}
+
+.landing-page h1 {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: 700;
+}
+
+.info-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info-text p {
+  font-size: var(--font-size-paragraph);
+  color: var(--dark-grayish-blue);
+}
+
+.info-text button {
+  max-width: 200px;
+  border: none;
+  outline: none;
+  background-color: var(--very-dark-blue);
+  color: var(--off-white);
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 3px;
+  padding: 1rem 2rem;
+}
+
+.main.flex-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.main.flex-group > * {
+  flex-basis: 35%;
+}
+
+.main.flex-group .landing-page {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.landing-page img {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.news {
+  --gap: 2em;
+  background-color: var(--very-dark-blue);
+  color: white;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: 2em;
+}
+
+.news .subheader {
+  margin-bottom: -1rem;
+  font-size: 50px;
+  color: var(--soft-orange);
+}
+
+.news-wrapper {
+  border-bottom: 1px solid var(--dark-grayish-blue);
+  padding-bottom: var(--gap);
+}
+
+.news-wrapper:last-child {
+  border: none;
+}
+
+.news-wrapper p {
+  font-size: var(--font-size-paragraph);
+  color: var(--dark-grayish-blue);
+}
+
+.news-wrapper h3 {
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.news-wrapper h3:hover {
+  color: var(--soft-orange);
+}
+
+.numbers-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.numbers-wrapper > * {
+  flex-basis: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.numbers-wrapper img {
+  height: 150px;
+}
+
+.numbers-wrapper p {
+  font-size: var(--font-size-paragraph);
+  color: var(--dark-grayish-blue);
+}
+
+.content {
+  max-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content span {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--grayish-blue);
+}
+
+.content h3 {
+  font-size: 18px;
+  transition: all 300ms ease;
+}
+
+.content h3:hover {
+  color: var(--soft-red);
+}
+
+@media screen and (max-width: 750px) {
+  body {
+    padding: 2rem;
+  }
+
+  nav > * {
+    flex-basis: 10%;
+  }
+
+  .logo {
+    flex-grow: 1;
+  }
+
+  .nav-links {
+    position: absolute;
+    right: 0;
+    top: -1rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    background-color: var(--very-dark-blue);
+    opacity: 0.8;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    transform: translateX(calc(100% + 10rem));
+    transition: 500ms ease;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .landing-page {
+    margin-bottom: 4rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .landing-page .landing-content > * {
+    flex-basis: 100%;
+  }
+
+  .main {
+    gap: 4rem;
+  }
+}
+
+@media screen and (max-width: 1316px) {
+  nav > * {
+    flex-basis: 20%;
+  }
+
+  .main {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .numbers-wrapper {
+    flex-direction: column;
+  }
+}
