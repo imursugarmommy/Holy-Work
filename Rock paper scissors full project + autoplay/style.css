@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 400px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+h2 {
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  background-color: #fff;
+  transition: 200ms ease;
+
+  position: relative;
+}
+
+button:hover {
+  background-color: #eee;
+}
+
+.reset button {
+  height: 40px;
+  border-radius: 3px;
+}
+
+.icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50px;
+}
+
+.js-moves img {
+  width: 40px;
+}
+
+.js-result {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* .mond {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  background-color: rgb(158, 158, 158);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.mond2 {
+  position: absolute;
+  top: 95px;
+  left: 195px;
+  background-color: rgb(158, 158, 158);
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+.krater1,
+.krater2,
+.krater3 {
+  position: absolute;
+  top: 150px;
+  left: 250px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #eee;
+}
+.krater2 {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  top: 250px;
+  left: 300px;
+}
+.krater3 {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  top: 180px;
+  left: 350px;
+}
+
+.wrapper-mond p {
+  position: absolute;
+  top: 330px;
+  left: 220px;
+  font-size: 25px;
+  font-weight: bold;
+} */
+
+.confirm {
+  width: 500px;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  background-color: #303030;
+  color: white;
+  height: 40px;
+  transform: translateX(-50px);
+  opacity: 0;
+}
+
+.toggle {
+  opacity: 1;
+}
+
+.confirm button {
+  width: 50px;
+  height: 30px;
+  border-radius: 0;
+  margin: 0 5px;
+  margin-left: 10px;
+  color: black;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  background-color: #303030;
+  position: absolute;
+  transform: rotate(45deg);
+  top: -5px;
+}
