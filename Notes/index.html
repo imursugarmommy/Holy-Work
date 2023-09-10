@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/Logo Picture.png" />
+    <title>Notes</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="dialog">
+        <i class="fa-solid fa-xmark"></i>
+        <h1>New Note List</h1>
+        <form action="#">
+          <p class="name">Name of new Note List:</p>
+          <input
+            type="text"
+            id="name"
+            placeholder="e.g Shopping List"
+            autocomplete="off" />
+
+          <p class="color">Choose a color for your new Note List</p>
+          <div class="grid">
+            <button
+              class="color-palette chosen"
+              id="red"
+              value="#b30900"></button>
+            <button
+              class="color-palette"
+              id="orange"
+              value="#e9a7b8"></button>
+            <button
+              class="color-palette"
+              id="yellow"
+              value="#ffffba"></button>
+            <button
+              class="color-palette"
+              id="green"
+              value="#baffc9"></button>
+            <button
+              class="color-palette"
+              id="blue"
+              value="#bae1ff"></button>
+            <button
+              class="color-palette"
+              id="brown"
+              value="#836953"></button>
+            <button
+              class="color-palette"
+              id="purple"
+              value="#957DAD"></button>
+            <button
+              class="color-palette"
+              id="pink"
+              value="#FFFFFF"></button>
+          </div>
+
+          <div class="button-wrapper">
+            <button
+              type="submit"
+              class="submit">
+              Create Note List
+            </button>
+          </div>
+        </form>
+      </div>
+      <nav>
+        <div class="logo">
+          <span>eZ</span>
+          <span class="closer">Notes</span>
+        </div>
+        <div class="links">
+          <button class="addBtn">
+            Add Note List <i class="fa-solid fa-plus"></i>
+          </button>
+          <ul class="nav-links">
+            <li class="active">General</li>
+          </ul>
+          <ul class="deleted">
+            <li>Last deleted <i class="fa-solid fa-trash"></i></li>
+          </ul>
+        </div>
+      </nav>
+      <main>
+        <div class="header">
+          <h1 class="title">General</h1>
+          <button class="delete-all">Delte all</button>
+
+          <div class="assure">
+            <p>Are you sure you want to delete all notes?</p>
+            <button class="cancel">Cancel</button>
+            <button class="confirm">I'm sure!</button>
+          </div>
+        </div>
+        <div class="notes">
+          <div class="add-notes">
+            <svg
+              width="200"
+              height="200"
+              viewBox="0 0 200 200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect
+                x="97"
+                y="25"
+                width="6"
+                height="150"
+                fill="rgb(226, 226, 226)" />
+              <rect
+                x="25"
+                y="97"
+                width="150"
+                height="6"
+                fill="rgb(226, 226, 226)" />
+            </svg>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/8a6963ffc1.js"
+      crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

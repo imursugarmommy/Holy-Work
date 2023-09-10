@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background-color: rgb(31, 31, 31);
+  color: rgb(226, 226, 226);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --primary-clr: rgb(31, 31, 31);
+  --secondary-clr: rgb(17, 17, 17);
+
+  --accent-white: rgb(226, 226, 226);
+  --accent-dark: rgb(73, 73, 73, 0.4);
+  --accent-dark700: rgb(73, 73, 73, 1);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-clr);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-clr);
+  border-radius: 15px;
+  border: 3px solid var(--primary-clr);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: black;
+}
+
+.container {
+  display: flex;
+  /* height: max(100vh, 100%); */
+  min-height: 100vh;
+}
+
+.container > * {
+  /* ! Please provide following in px units ! */
+  --width-offset: 300px;
+  flex-basis: var(--width-offset);
+}
+
+.container nav {
+  background-color: var(--secondary-clr);
+  position: relative;
+  padding: 2rem;
+}
+
+.container nav .links {
+  position: absolute;
+  right: 0;
+  top: 120px;
+  width: 100%;
+  padding-left: 1rem;
+  padding: 2rem;
+}
+
+.container nav .links button {
+  width: 100%;
+  background-color: var(--accent-dark);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 0;
+  color: var(--accent-white);
+}
+
+.container nav .links ul {
+  list-style: disc;
+}
+
+.container nav .links .nav-links {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.container nav .links .nav-links li::marker {
+  color: var(--marker-color);
+}
+
+.container nav .links .nav-links::before {
+  content: '';
+  position: absolute;
+  bottom: -0.8rem;
+  width: 80%;
+  height: 2px;
+  background-color: var(--accent-dark);
+}
+
+.container nav .links .nav-links li {
+  width: 100%;
+  background-color: var(--secondary-clr);
+  border: 5px solid var(--secondary-clr);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  color: var(--accent-white);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  cursor: pointer;
+  box-sizing: content-box;
+  margin-left: -1.3rem;
+  transition: border 200ms ease;
+}
+
+.container nav .links .deleted li {
+  width: 100%;
+  background-color: var(--secondary-clr);
+  border: 5px solid var(--secondary-clr);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  padding: 0.5rem 0;
+  color: rgb(148, 148, 148);
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  cursor: pointer;
+  box-sizing: content-box;
+  margin-left: -1.3rem;
+  transition: border 200ms ease;
+  list-style: none;
+}
+
+.active {
+  border: 5px solid var(--primary-clr) !important;
+}
+
+.logo {
+  font-family: 'Satisfy', cursive;
+  font-weight: 400;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+  background-color: var(--secondary-clr);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.logo .closer {
+  margin-left: -10px;
+}
+
+.container main {
+  flex-grow: 1;
+  padding: 2rem 4rem;
+  position: relative;
+}
+
+.container main .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: var(--width-offset);
+  padding: 1rem 2rem 1.5rem;
+  background-color: var(--primary-clr);
+  z-index: 2000;
+}
+
+.container main h1 {
+  font-size: 50px;
+}
+
+.container main button {
+  background-color: var(--accent-dark);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 0;
+  color: var(--accent-white);
+  height: fit-content;
+  padding: 0.5rem 5rem;
+  position: relative;
+}
+
+.assure {
+  position: absolute;
+  right: 2rem;
+  bottom: -7rem;
+  padding: 1.5rem;
+  background-color: var(--secondary-clr);
+  display: none;
+}
+
+.assure p {
+  margin-bottom: 1rem;
+}
+
+.container main .assure::before {
+  content: '';
+  position: absolute;
+  right: 100px;
+  transform: rotate(45deg);
+  top: -8px;
+  width: 15px;
+  aspect-ratio: 1;
+  background-color: var(--secondary-clr);
+  z-index: 3000;
+}
+
+.container main .add-notes {
+  height: 200px;
+  aspect-ratio: 1;
+  background-color: var(--accent-dark);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.container main .notes {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 8rem;
+}
+
+.container main .notes > * {
+  position: relative;
+}
+
+.container main .notes > * textarea {
+  resize: none;
+  height: 200px;
+  aspect-ratio: 1;
+  padding: 0.5rem;
+  outline: none;
+  font-size: 14px;
+  line-height: 14px;
+  color: black;
+}
+
+.container main .notes > * textarea::placeholder {
+  color: var(--accent-dark700);
+}
+
+.container main .notes > * .delete-note {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  background-color: var(--accent-dark);
+  font-size: 12px;
+  z-index: 1000;
+  padding: 0.2rem 0.4rem;
+  color: var(--accent-white);
+}
+
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  outline: none;
+  border: none;
+  background-color: var(--secondary-clr);
+  color: var(--accent-white);
+  padding: 2rem;
+  box-shadow: 5px 5px 15px var(--secondary-clr);
+  z-index: 9999;
+
+  display: none;
+}
+
+.dialog .fa-xmark {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--accent-dark);
+  font-size: 18px;
+}
+
+.dialog h1 {
+  font-size: 50px;
+  margin-bottom: 2rem;
+}
+
+.dialog p {
+  font-size: 14px;
+  color: var(--accent-dark700);
+  margin-bottom: 0.5rem;
+  margin-inline: 0.5rem;
+}
+
+.dialog input {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  background-color: transparent;
+  border: 2px solid var(--primary-clr);
+  color: var(--accent-white);
+}
+
+.dialog .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.dialog .grid button {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+
+.dialog .button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.dialog .button-wrapper button {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-clr);
+  color: var(--accent-white);
+}
+
+.dialog .grid .chosen {
+  box-shadow: 0 0 0 5px var(--accent-dark700);
+}
