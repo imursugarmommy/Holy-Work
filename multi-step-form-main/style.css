@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Ubuntu', sans-serif;
+  overflow-x: hidden;
+
+  display: grid;
+  place-items: center;
+  background-color: var(--pastel-blue);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  /* ! Primary */
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+
+  /* ? Neutral */
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+
+  --box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  width: 90%;
+  /* height: 90vh; */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px var(--box-shadow);
+  margin-block: 10vh;
+}
+
+.numbers {
+  height: 200px;
+  background: url(../multi-step-form-main/assets/images/bg-sidebar-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.numbers > div {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.numbers > div > * {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid white;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.numbers > div > .active {
+  background: var(--light-blue);
+  border: none;
+  color: black;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background-color: var(--magnolia);
+  flex-grow: 1;
+}
+
+.card {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  transform: translateY(-3rem);
+}
+
+.card > * {
+  background-color: var(--white);
+  width: 90%;
+  border-radius: 15px;
+  padding: 2rem;
+  display: none;
+  box-shadow: 0 0 30px -5px var(--box-shadow);
+}
+
+.card > .active {
+  display: block;
+}
+
+.card-text {
+  margin-block: 1rem;
+}
+
+.card-text h1 {
+  font-size: 30px;
+  color: var(--marine-blue);
+}
+
+.card-text p {
+  font-size: 16px;
+  color: var(--cool-gray);
+}
+
+.card .personal-info .inputs > * {
+  margin-bottom: 1rem;
+}
+
+.card .personal-info .inputs > * p {
+  font-size: 14px;
+  color: var(--marine-blue);
+}
+
+.card .personal-info .inputs > * input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 3px;
+  outline: none;
+}
+
+.card .personal-info .inputs > * input::placeholder {
+  font-weight: 400;
+  color: var(--cool-gray);
+}
+
+/* gap */
+
+.choose-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-direction: column;
+}
+
+.choose-wrapper > * {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.choose-wrapper > * h2 {
+  font-size: 20px;
+  color: var(--marine-blue);
+}
+
+.choose-wrapper > * p {
+  font-size: 16px;
+  color: var(--cool-gray);
+}
+
+.choose-wrapper > .active {
+  border: 1px solid var(--purplish-blue);
+  background: var(--magnolia);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 20;
+}
+
+.span {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  background: var(--magnolia);
+  padding: 1rem 0;
+  border-radius: 5px;
+}
+
+.span p {
+  font-weight: 500;
+  color: var(--marine-blue);
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--marine-blue);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  bottom: 2px;
+  left: 2px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.select-plan input:checked + .slider {
+  background-color: var(--marine-blue);
+}
+
+.select-plan input:focus + .slider {
+  box-shadow: 0 0 1px var(--marine-blue);
+}
+
+.select-plan input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(36px);
+}
+
+.pick-container .pick-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pick-container .pick-wrapper > * {
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pick-container .pick-wrapper > * > * {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pick-container .pick-wrapper > .active {
+  border: 1px solid var(--purplish-blue);
+  background: var(--magnolia);
+}
+
+.pick-container .pick-wrapper > .active .checkbox {
+  background: url(../multi-step-form-main/assets/images/checkmark.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border: none;
+}
+
+.pick-container .pick-wrapper .add-price {
+  color: var(--purplish-blue);
+}
+
+.pick-container .pick-wrapper > * .text h2 {
+  font-size: 18px;
+  color: var(--marine-blue);
+}
+
+.pick-container .pick-wrapper > * .text p {
+  font-size: 16px;
+  color: var(--cool-gray);
+}
+
+.pick-container .pick-wrapper > * .checkbox {
+  height: 20px;
+  width: 20px;
+  border: 1px solid var(--light-gray);
+  border-radius: 3px;
+}
+
+.reciepe {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--alabaster);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.basis {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  color: var(--marine-blue);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.basis::before {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: var(--light-gray);
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+}
+
+.reciepe #additional > * {
+  display: flex;
+  justify-content: space-between;
+  color: var(--cool-gray);
+  margin-bottom: 0.5rem;
+}
+
+.reciepe #additional > * .blue {
+  color: var(--marine-blue);
+}
+
+.total {
+  margin-inline: 1rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--light-gray);
+}
+
+.purple {
+  font-weight: 700;
+  color: var(--purplish-blue);
+}
+
+.complete {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.footer {
+  height: 100px;
+  background-color: var(--white);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer .back {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-weight: 400;
+  color: var(--cool-gray);
+  text-decoration: underline transparent;
+  transition: all 200ms ease;
+}
+
+.footer .back:hover {
+  text-decoration: underline;
+}
+
+.footer .confirm {
+  background-color: var(--marine-blue);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  transition: all 200ms ease;
+}
+
+.footer .confirm:hover {
+  background-color: var(--pastel-blue);
+}
