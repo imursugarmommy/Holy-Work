@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100%;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Josefin', sans-serif;
+  overflow-x: hidden;
+  background-color: var(--very-dark-blue);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  /* Primary */
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+  /* light theme */
+  /*   
+  --very-light-gray: hsl(0, 0%, 98%);
+  --very-light-grayish-Blue: hsl(236, 33%, 92%);
+  --light-grayish-blue: hsl(233, 11%, 84%);
+  --dark-Ggayish-blue: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue: hsl(235, 19%, 35%); 
+  */
+
+  /* dark theme */
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desaturated-blue: rgb(40, 40, 54);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue-background: hsl(237, 14%, 26%);
+
+  /* font size */
+  --font-size: 18px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--very-dark-desaturated-blue);
+  border-radius: 15px;
+  border: 3px solid var(--very-dark-blue);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: black;
+}
+
+ul::-webkit-scrollbar {
+  width: 10px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: var(--very-dark-desaturated-blue);
+  border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: var(--very-dark-blue);
+  border-radius: 15px;
+  border: 3px solid var(--very-dark-desaturated-blue);
+}
+
+ul::-webkit-scrollbar-thumb:active {
+  background: black;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  --gap: 2rem;
+  --padding: 1rem 2rem;
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  gap: 0;
+  position: relative;
+}
+
+.container .background-img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+
+  & img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.container main {
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background-color: var(--very-dark-blue);
+
+  .content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    width: 600px;
+  }
+}
+
+.container .header {
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: 60px;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  color: var(--light-grayish-blue);
+  font-weight: 700;
+}
+
+.circle {
+  height: 25px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--very-dark-grayish-blue);
+}
+
+.new-todo {
+  width: 100%;
+  gap: var(--gap);
+  padding: var(--padding);
+  background-color: var(--very-dark-desaturated-blue);
+  margin-bottom: var(--padding);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+  & input {
+    flex-grow: 1;
+    background-color: transparent;
+    color: var(--light-grayish-blue);
+    outline: none;
+    border: none;
+
+    &::placeholder {
+      color: var(--very-dark-grayish-blue);
+    }
+  }
+}
+
+.list {
+  box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.4);
+  background-color: var(--very-dark-desaturated-blue);
+  border-radius: 5px;
+
+  .circle {
+    cursor: pointer;
+    transition: border 200ms ease;
+    &:hover {
+      border: 1px solid var(--light-grayish-blue-hover);
+    }
+  }
+
+  .circle.checked {
+    background: url(./images/icon-check.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+  }
+
+  & ul {
+    padding: 0;
+    height: 350px;
+    overflow-y: scroll;
+
+    & li {
+      font-weight: 400;
+      width: 100%;
+      padding: var(--padding);
+      justify-content: space-between;
+      color: var(--light-grayish-blue);
+      border-bottom: 1px solid var(--very-dark-grayish-blue-background);
+      align-items: center;
+      position: relative;
+
+      & .flex {
+        gap: var(--gap);
+      }
+
+      & svg {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.overview {
+  padding: 0 2rem 0.8rem;
+  color: var(--very-dark-grayish-blue-background);
+  font-weight: 700;
+  font-size: 14px;
+  width: 100%;
+  justify-content: space-between;
+
+  .dom-steering {
+    gap: 1rem;
+    margin-left: 2rem;
+
+    > * {
+      cursor: pointer;
+      transition: color 200ms ease;
+
+      &:hover {
+        color: var(--light-grayish-blue);
+      }
+    }
+
+    .selected {
+      color: var(--bright-blue);
+    }
+  }
+
+  .item-count,
+  .clear {
+    font-weight: 500;
+  }
+}
+
+.info-text {
+  color: var(--dark-grayish-blue);
+  font-size: 12px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50px;
+}
