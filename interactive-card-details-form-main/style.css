@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --linear-gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+  --red: hsl(0, 100%, 66%);
+  --white: hsl(0, 0%, 100%);
+  --light-grayish-violet: hsl(270, 3%, 87%);
+  --very-dark-violet: hsl(278, 68%, 11%);
+  --dark-grayish-violet: hsl(279, 6%, 55%);
+  --font-size: 14px;
+}
+
+.background {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  position: relative;
+}
+
+.background img {
+  height: 100%;
+}
+
+.card {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 400;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
+.card p {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.relative {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.front-card {
+  position: absolute;
+  top: 100px;
+  left: 0;
+}
+
+.card .relative .front-card .relative svg {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.card .relative .front-card .relative h1 {
+  color: var(--white);
+
+  font-weight: 400;
+  position: absolute;
+  left: 2rem;
+  bottom: 4.5rem;
+}
+
+.card .relative .front-card .relative p {
+  color: white;
+  font-size: var(--font-size);
+}
+
+.card .relative .front-card .relative .left {
+  position: absolute;
+  left: 2rem;
+  bottom: 1rem;
+}
+
+.card .relative .front-card .relative .right {
+  position: absolute;
+  right: 2rem;
+  bottom: 1rem;
+}
+
+.back-card {
+  position: absolute;
+  top: 380px;
+  left: 120px;
+}
+
+.card .relative .back-card .relative p {
+  color: white;
+  position: absolute;
+  top: 110px;
+  right: 55px;
+  letter-spacing: 2px;
+}
+
+.content form {
+  --width: 100%;
+  width: 400px;
+  aspect-ratio: 1;
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.content form .flex {
+  display: flex;
+}
+
+.content form input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--light-grayish-violet);
+  border-radius: 10px;
+  color: var(--very-dark-violet);
+  outline: none;
+  font-weight: 500;
+}
+
+.content form input::placeholder {
+  color: var(--light-grayish-violet);
+}
+
+.content .flex {
+  gap: 1rem;
+}
+
+.content .flex .date .date-input.flex {
+  gap: 0.5rem;
+}
+
+.content .flex .date .date-input.flex .quarter {
+  width: 80px;
+}
+
+.content form button {
+  padding: 0.8rem 0;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: var(--very-dark-violet);
+  color: var(--white);
+  margin-top: 1.5rem;
+}
+
+.content form p {
+  font-size: var(--font-size);
+  font-weight: 500;
+  color: var(--very-dark-violet);
+  margin-bottom: 5px;
+}
+
+#name-alert,
+#number-alert,
+#date-alert,
+#cvc-alert {
+  text-transform: none;
+  color: var(--red);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.finished {
+  width: 400px;
+  aspect-ratio: 1;
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.finished button {
+  width: 100%;
+  padding: 0.8rem 0;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: var(--very-dark-violet);
+  color: var(--white);
+  margin-top: 1.5rem;
+}

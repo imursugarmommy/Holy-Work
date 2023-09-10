@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png" />
+    <link
+      rel="stylesheet"
+      href="style.css" />
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+  <body>
+    <div class="background">
+      <img
+        src="/Frontend Mentor/interactive-card-details-form-main/images/bg-main-desktop.png"
+        alt="" />
+    </div>
+
+    <div class="card">
+      <div class="relative">
+        <div class="front-card">
+          <div class="relative">
+            <img
+              src="/Frontend Mentor/interactive-card-details-form-main/images/bg-card-front.png"
+              alt="" />
+            <svg
+              width="84"
+              height="47"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <ellipse
+                cx="23.478"
+                cy="23.5"
+                rx="23.478"
+                ry="23.5"
+                fill="#fff" />
+              <path
+                d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"
+                stroke="#fff" />
+            </svg>
+            <h1 class="number-display">0000 0000 0000 0000</h1>
+            <p class="left name-display">Jane Appleseed</p>
+            <p class="right">
+              <span class="month-display">00</span> /
+              <span class="year-display">00</span>
+            </p>
+          </div>
+        </div>
+        <div class="back-card">
+          <div class="relative">
+            <img
+              src="/Frontend Mentor/interactive-card-details-form-main/images/bg-card-back.png"
+              alt="" />
+            <p class="cvc-display">000</p>
+          </div>
+        </div>
+        <div class="content">
+          <form action="#">
+            <div>
+              <p>Cardholder Name</p>
+              <input
+                type="text"
+                id="name"
+                placeholder="e.g. Jane Appleseed" />
+              <p
+                class="danger"
+                id="name-alert"></p>
+            </div>
+
+            <div>
+              <p>Card number</p>
+              <input
+                type="text"
+                id="number"
+                placeholder="e.g. 1234 5678 9123 0000"
+                maxlength="19" />
+              <p
+                class="danger"
+                id="number-alert"></p>
+            </div>
+
+            <div class="flex">
+              <div class="date">
+                <p>Exp. Date (MM/YY)</p>
+                <div class="date-input flex">
+                  <input
+                    class="quarter"
+                    type="text"
+                    id="month"
+                    placeholder="MM"
+                    maxlength="2" />
+                  <input
+                    class="quarter"
+                    type="text"
+                    id="year"
+                    placeholder="YY"
+                    maxlength="2" />
+                </div>
+                <p
+                  class="danger"
+                  id="date-alert"></p>
+              </div>
+              <div>
+                <p>cvc</p>
+                <input
+                  class="half"
+                  type="text"
+                  id="cvc"
+                  placeholder="e.g. 123"
+                  maxlength="3" />
+                <p
+                  class="danger"
+                  id="cvc-alert"></p>
+              </div>
+            </div>
+            <button
+              class="confirm"
+              type="submit">
+              Confirm
+            </button>
+          </form>
+        </div>
+        <div class="finished">
+          <svg
+            width="80"
+            height="80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="40"
+              cy="40"
+              r="40"
+              fill="url(#a)" />
+            <path
+              d="M28 39.92 36.08 48l16-16"
+              stroke="#fff"
+              stroke-width="3" />
+            <defs>
+              <linearGradient
+                id="a"
+                x1="-23.014"
+                y1="11.507"
+                x2="0"
+                y2="91.507"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6348FE" />
+                <stop
+                  offset="1"
+                  stop-color="#610595" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <h1>Thank you!</h1>
+          <p>We've added your card details</p>
+          <button class="continue">Continue</button>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
