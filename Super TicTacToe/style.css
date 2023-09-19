@@ -79,6 +79,8 @@ button {
   --text: rgb(245, 245, 245);
   --highlight: rgba(220, 220, 220, 0.4);
   --border: rgb(204, 204, 204);
+
+  --warning: rgb(187, 0, 0);
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
@@ -146,7 +148,7 @@ button {
   width: 170px;
   height: 180px;
   border-radius: 50%;
-  border: 6px solid var(--text-txt);
+  border: 6px solid black;
   position: absolute;
 }
 
@@ -154,7 +156,7 @@ button {
   content: '';
   width: 200px;
   height: 6px;
-  background-color: var(--text-txt);
+  background-color: black;
   position: absolute;
   rotate: -50deg;
 }
@@ -162,7 +164,7 @@ button {
   content: '';
   width: 200px;
   height: 6px;
-  background-color: var(--text-txt);
+  background-color: black;
   position: absolute;
   rotate: 50deg;
 }
@@ -281,6 +283,34 @@ button {
   left: 50px;
   font-size: 50px;
   font-family: 'Nanum Pen Script', cursive;
+  /* font-family: 'Poppins', sans-serif; */
   font-weight: 700;
-  color: var(--text-txt);
+  color: black;
+}
+
+.error {
+  position: absolute;
+  bottom: 75px;
+  color: var(--warning);
+  font-size: 20px;
+  opacity: 0;
+  width: 500px;
+  text-align: center;
+  transition: all 200ms;
+  /* animation: error 3s ease; */
+}
+
+@keyframes error {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

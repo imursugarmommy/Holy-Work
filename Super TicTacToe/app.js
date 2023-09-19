@@ -10,8 +10,7 @@ let p1Count = 0;
 let p2Count = 0;
 const p1CountHTML = document.querySelectorAll('.p1');
 const p2CountHTML = document.querySelectorAll('.p2');
-
-// let placedMoves = ['', '', '', '', '', '', '', '', ''];
+const errorMessage = document.querySelector('.error');
 
 let placeableMoves = [
   ['', '', '', '', '', '', '', '', ''],
@@ -25,13 +24,15 @@ let placeableMoves = [
   ['', '', '', '', '', '', '', '', ''],
 ];
 
+let bigFieldPlacedMoves = ['', '', '', '', '', '', '', '', ''];
+
 const winningOptions = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
   [0, 3, 6],
   [1, 4, 7],
-  [3, 5, 8],
+  [2, 5, 8],
   [0, 4, 8],
   [2, 4, 6],
 ];
@@ -56,6 +57,8 @@ function gameStart() {
       const cellIndex = e.target.getAttribute('cellIndex');
       const clicked = e.target;
 
+      console.log(p1Count);
+
       clicked.classList.add('clicked');
 
       if (cellIndex != null) {
@@ -63,7 +66,7 @@ function gameStart() {
           return;
         }
 
-        // ! overwriting fix
+        // * overwriting fix
         if (clicked.innerText !== '') {
           return;
         }
@@ -79,26 +82,43 @@ function gameStart() {
           checkWinner(placedMove, winnerField);
         }
 
-        // ? bug: trotz schon voll besetztem Felde clicked-class weitergegeben an gross-grid index
-        clicked.parentNode.classList.remove('clicked');
-        clicked.classList.remove('clicked');
-        bigFields[cellIndex].classList.add('clicked');
-
         changePlayer();
-      }
 
-      bigFields.forEach((court) => {
-        if (!court.classList.contains('clicked')) {
-          court.style.pointerEvents = 'none';
+        // * bug (fixed): trotz schon voll besetztem Felde clicked-class weitergegeben an gross-grid index
+
+        if (bigFields[cellIndex].getAttribute('won') !== 'true') {
+          clicked.parentNode.classList.remove('clicked');
+          clicked.classList.remove('clicked');
+          bigFields[cellIndex].classList.add('clicked');
+
+          bigFields.forEach((court) => {
+            if (!court.classList.contains('clicked')) {
+              court.style.pointerEvents = 'none';
+            }
+          });
+        } else {
+          bigFields.forEach((field) => {
+            field.classList.remove('clicked');
+          });
+
+          bigFields.forEach((field) => {
+            if (field.getAttribute('won') !== 'true') {
+              field.style.pointerEvents = 'all';
+            }
+          });
+
+          errorMessage.innerText = `Field has already been won! Player (${playerTurn}) can choose freely now.`;
+          errorMessage.style.animation = 'error 3s linear';
+          setTimeout(() => {
+            errorMessage.style.animation = 'none';
+          }, 3000);
         }
-      });
+      }
     });
   });
 }
 
 function checkWinner(move, winner) {
-  let roundWon = false;
-
   for (let i = 0; i < winningOptions.length; i++) {
     const conditions = winningOptions[i];
 
@@ -112,8 +132,6 @@ function checkWinner(move, winner) {
     const cellC = move[conditions[2]];
 
     if (cellA === cellB && cellB === cellC && cellA !== '') {
-      // console.log(fields[conditions[0]]);
-
       const bigCellIndexSetWinner =
         winner.parentNode.getAttribute('bigCellIndex');
 
@@ -124,28 +142,39 @@ function checkWinner(move, winner) {
       const winningfield2 = winningFieldArray[conditions[1]];
       const winningfield3 = winningFieldArray[conditions[2]];
 
-      // console.log(bigFields[bigCellIndexSetWinner]);
-      // bigFields[bigCellIndexSetWinner].classList.add('won');
-      // bigFields[bigCellIndexSetWinner].classList.add(`${playerTurn}`);
-
-      // ! fix, dass in allen feldern die winnerfields von einem Feld angezeigt werden
-      if (winningfield1.innerText === 'X' || winningfield1.innerText === 'O') {
-        if (
-          winningfield2.innerText === 'X' ||
-          winningfield2.innerText === 'O'
-        ) {
-          if (
-            winningfield3.innerText === 'X' ||
-            winningfield3.innerText === 'O'
-          ) {
+      // * fix, dass in allen feldern die winnerfields von einem Feld angezeigt werden
+      if (
+        (winningfield1.innerText === 'X' || winningfield1.innerText === 'O') &&
+        (winningfield2.innerText === 'X' || winningfield2.innerText === 'O') &&
+        (winningfield3.innerText === 'X' || winningfield3.innerText === 'O')
+      ) {
+        if (winningfield1.innerText == winningfield2.innerText) {
+          if (winningfield2.innerText == winningfield3.innerText) {
             winningfield1.style.background = 'var(--highlight)';
             winningfield2.style.background = 'var(--highlight)';
             winningfield3.style.background = 'var(--highlight)';
+
+            winningBigField.setAttribute('won', 'true');
           }
         }
       }
 
-      // checkBigGridWinner();
+      // * wenn Feld besetzt ist deren Index soeben clicked wurde, so bleibt man im vorherigen Feld
+      // * wenn vorheriges Feld mit diesem Zug gewonnen hat und nicht in ein anderes Feld gebracht wird
+      // * plaziert man weiterhin im gewonnenen Feld
+      // * wenn im gewonnenem Feld platziert wird, wird die class ueberschrieben
+
+      // * Bug fixed
+      if (winningBigField.getAttribute('won') === 'true') {
+        winningBigField.classList.add('won');
+        winningBigField.classList.add(playerTurn);
+
+        let winningBigFieldIndex = winningBigField.getAttribute('bigCellIndex');
+        bigFieldPlacedMoves.splice(winningBigFieldIndex, 1, playerTurn);
+
+        moves++;
+        checkBigGridWinner();
+      }
 
       const centerA = getCenterPosition(winningfield1);
       const centerB = getCenterPosition(winningfield3);
@@ -161,13 +190,33 @@ function checkWinner(move, winner) {
 
       break;
     }
+  }
+}
 
-    if (roundWon) {
+function checkBigGridWinner() {
+  let roundWon = false;
+
+  for (let i = 0; i < winningOptions.length; i++) {
+    const options = winningOptions[i];
+
+    const cellA = bigFieldPlacedMoves[options[0]];
+    const cellB = bigFieldPlacedMoves[options[1]];
+    const cellC = bigFieldPlacedMoves[options[2]];
+
+    if (cellA === cellB && cellB === cellC && cellA !== '') {
+      roundWon = true;
       break;
+
+      // ! find a way to either hightlight winning Cells or draw a line through them
     }
   }
 
+  if ((moves = 9) && !bigFieldPlacedMoves.includes('')) {
+    draw = true;
+  }
+
   if (draw) {
+    isGameOver = true;
     statusText.innerText = "It's a draw!";
   }
 
@@ -175,7 +224,11 @@ function checkWinner(move, winner) {
     isGameOver = true;
     statusText.innerText = `${playerTurn} wins!`;
 
-    changePlayer();
+    if (playerTurn === 'X') {
+      p1Count++;
+    } else {
+      p2Count++;
+    }
 
     p1CountHTML.forEach((count) => {
       count.innerHTML = p1Count;
@@ -188,6 +241,10 @@ function checkWinner(move, winner) {
   if (isGameOver) {
     popup.style.display = 'flex';
     restartBtn.style.display = 'block';
+
+    bigFields.forEach((field) => {
+      field.style.pointerEvents = 'none';
+    });
   }
 }
 
@@ -196,15 +253,38 @@ restartBtn.addEventListener('click', () => {
   playerTurn = 'X';
   isGameOver = false;
   draw = false;
+
   fields.forEach((field) => {
     field.innerText = '';
 
     // resets highlight onclick
     field.style.background = 'none';
   });
+
+  bigFields.forEach((field) => {
+    // remove a bunch of classes
+    field.classList.remove('won');
+    field.classList.remove('X');
+    field.classList.remove('O');
+
+    field.setAttribute('won', 'false');
+  });
+
   popup.style.display = 'none';
   restartBtn.style.display = 'none';
-  // placedMoves = ['', '', '', '', '', '', '', '', ''];
+
+  bigFieldPlacedMoves = ['', '', '', '', '', '', '', '', ''];
+  placeableMoves = [
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+  ];
 
   c.style.zIndex = '-1';
   ctx.clearRect(0, 0, c.width, c.height);
