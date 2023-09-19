@@ -148,7 +148,7 @@ button {
   width: 170px;
   height: 180px;
   border-radius: 50%;
-  border: 6px solid var(--text-txt);
+  border: 6px solid black;
   position: absolute;
 }
 
@@ -156,7 +156,7 @@ button {
   content: '';
   width: 200px;
   height: 6px;
-  background-color: var(--text-txt);
+  background-color: black;
   position: absolute;
   rotate: -50deg;
 }
@@ -164,7 +164,7 @@ button {
   content: '';
   width: 200px;
   height: 6px;
-  background-color: var(--text-txt);
+  background-color: black;
   position: absolute;
   rotate: 50deg;
 }
@@ -283,6 +283,7 @@ button {
   left: 50px;
   font-size: 50px;
   font-family: 'Nanum Pen Script', cursive;
+  /* font-family: 'Poppins', sans-serif; */
   font-weight: 700;
   color: black;
 }
@@ -293,33 +294,23 @@ button {
   color: var(--warning);
   font-size: 20px;
   opacity: 0;
-  /* animation: shake 0.6s ease; */
+  width: 500px;
+  text-align: center;
+  transition: all 200ms;
+  /* animation: error 3s ease; */
 }
 
-@keyframes shake {
+@keyframes error {
   0% {
     opacity: 0;
-    transform: translateX(0);
   }
-  15% {
-    transform: translateX(10px);
-  }
-  30% {
-    transform: translateX(-10px);
-  }
-  45% {
+  10% {
     opacity: 1;
-    transform: translateX(10px);
   }
-  60% {
-    transform: translateX(-10px);
-  }
-  75% {
+  90% {
     opacity: 1;
-    transform: translateX(10px);
   }
   100% {
-    transform: translateX(0);
     opacity: 0;
   }
 }

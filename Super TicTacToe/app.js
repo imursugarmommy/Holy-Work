@@ -12,8 +12,6 @@ const p1CountHTML = document.querySelectorAll('.p1');
 const p2CountHTML = document.querySelectorAll('.p2');
 const errorMessage = document.querySelector('.error');
 
-// let placedMoves = ['', '', '', '', '', '', '', '', ''];
-
 let placeableMoves = [
   ['', '', '', '', '', '', '', '', ''],
   ['', '', '', '', '', '', '', '', ''],
@@ -59,6 +57,8 @@ function gameStart() {
       const cellIndex = e.target.getAttribute('cellIndex');
       const clicked = e.target;
 
+      console.log(p1Count);
+
       clicked.classList.add('clicked');
 
       if (cellIndex != null) {
@@ -82,27 +82,38 @@ function gameStart() {
           checkWinner(placedMove, winnerField);
         }
 
-        // ? bug: trotz schon voll besetztem Felde clicked-class weitergegeben an gross-grid index
+        changePlayer();
+
+        // * bug (fixed): trotz schon voll besetztem Felde clicked-class weitergegeben an gross-grid index
 
         if (bigFields[cellIndex].getAttribute('won') !== 'true') {
           clicked.parentNode.classList.remove('clicked');
           clicked.classList.remove('clicked');
           bigFields[cellIndex].classList.add('clicked');
+
+          bigFields.forEach((court) => {
+            if (!court.classList.contains('clicked')) {
+              court.style.pointerEvents = 'none';
+            }
+          });
         } else {
-          errorMessage.style.animation = 'shake 0.6s ease';
+          bigFields.forEach((field) => {
+            field.classList.remove('clicked');
+          });
+
+          bigFields.forEach((field) => {
+            if (field.getAttribute('won') !== 'true') {
+              field.style.pointerEvents = 'all';
+            }
+          });
+
+          errorMessage.innerText = `Field has already been won! Player (${playerTurn}) can choose freely now.`;
+          errorMessage.style.animation = 'error 3s linear';
           setTimeout(() => {
             errorMessage.style.animation = 'none';
-          }, 600);
+          }, 3000);
         }
-
-        changePlayer();
       }
-
-      bigFields.forEach((court) => {
-        if (!court.classList.contains('clicked')) {
-          court.style.pointerEvents = 'none';
-        }
-      });
     });
   });
 }
@@ -152,14 +163,14 @@ function checkWinner(move, winner) {
       // * wenn vorheriges Feld mit diesem Zug gewonnen hat und nicht in ein anderes Feld gebracht wird
       // * plaziert man weiterhin im gewonnenen Feld
       // * wenn im gewonnenem Feld platziert wird, wird die class ueberschrieben
-      // ! Bug fix needed
+
+      // * Bug fixed
       if (winningBigField.getAttribute('won') === 'true') {
         winningBigField.classList.add('won');
         winningBigField.classList.add(playerTurn);
 
         let winningBigFieldIndex = winningBigField.getAttribute('bigCellIndex');
         bigFieldPlacedMoves.splice(winningBigFieldIndex, 1, playerTurn);
-        console.log(bigFieldPlacedMoves);
 
         moves++;
         checkBigGridWinner();
@@ -230,6 +241,10 @@ function checkBigGridWinner() {
   if (isGameOver) {
     popup.style.display = 'flex';
     restartBtn.style.display = 'block';
+
+    bigFields.forEach((field) => {
+      field.style.pointerEvents = 'none';
+    });
   }
 }
 
@@ -238,15 +253,38 @@ restartBtn.addEventListener('click', () => {
   playerTurn = 'X';
   isGameOver = false;
   draw = false;
+
   fields.forEach((field) => {
     field.innerText = '';
 
     // resets highlight onclick
     field.style.background = 'none';
   });
+
+  bigFields.forEach((field) => {
+    // remove a bunch of classes
+    field.classList.remove('won');
+    field.classList.remove('X');
+    field.classList.remove('O');
+
+    field.setAttribute('won', 'false');
+  });
+
   popup.style.display = 'none';
   restartBtn.style.display = 'none';
-  // placedMoves = ['', '', '', '', '', '', '', '', ''];
+
+  bigFieldPlacedMoves = ['', '', '', '', '', '', '', '', ''];
+  placeableMoves = [
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+  ];
 
   c.style.zIndex = '-1';
   ctx.clearRect(0, 0, c.width, c.height);
